@@ -1,0 +1,23 @@
+<div class="d-flex justify-content-center">
+  <label id="label" class="" for="select">Filter</label>
+  <select class="" (change)="changeOption()" [(ngModel)]="selectedOption" name="select" id="select">
+    @for (category of categories; track $index) {
+      <option value="{{categories[$index]}}">{{categories[$index]}}
+      </option>
+    }
+  </select>
+</div>
+
+  <div id="box" class="mx-auto d-flex mt-3 justify-content-center row"> 
+    @for (product of products; track $index){
+      <div (click)="click(product.id)" class="d-flex flex-column .justify-content-between
+      card mx-2 my-2">
+        <img src="{{products[$index].image}}" class="card-img-top" alt="{{products[$index].image}}">
+        <div class="d-flex mt-3 flex-column align-items-center">
+          <h5 class="text-center card-title">{{product.title}}</h5>
+          <p class="card-text fw-bold">${{products[$index].price}}</p>
+          <button type="button" class="mb-3 btn btn-primary">Add to cart</button>
+        </div>
+      </div>
+    }
+  </div>
