@@ -1,11 +1,12 @@
 import { Component } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ServiceService } from '../service/service.service';
+import { ProductsListComponent } from "../products-list/products-list.component";
 
 @Component({
   selector: 'app-header',
   standalone: true,
-  imports: [FormsModule],
+  imports: [FormsModule, ProductsListComponent],
   templateUrl: './header.component.html',
   styleUrl: './header.component.css'
 })

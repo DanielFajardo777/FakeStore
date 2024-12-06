@@ -1,5 +1,9 @@
-<div id="cont d.flex flex-column align-items-center" class="row">
-  <img class="img-fluid" src="{{product.image}}" alt="">
-  <!-- <div></div> -->
-   <p>{{product.description}}</p>
+<div id="cont" class=" mx-auto d-flex justify-content-center row">
+  <img class="col-10 col-md-4" src="{{product.image}}" alt="{{product.image}}">
+  <div class="pt-4 col-10 col-md-5">
+    <h5 clas>{{product.title}}</h5>
+    <h4>${{product.price}}</h4>
+    <p>{{product.description}}</p>
+    <button class="btn btn-primary">Add to card</button>
+  </div>
 </div>
