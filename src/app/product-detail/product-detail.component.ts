@@ -1,17 +1,24 @@
-import { Component, OnInit } from '@angular/core';
+import { AfterViewInit, Component, OnDestroy, OnInit } from '@angular/core';
 import { ProductsListService } from '../products-list/products-list.service';
 import { ServiceService } from '../service/service.service';
+import { HeaderComponent } from '../header/header.component';
 
 @Component({
   selector: 'app-product-detail',
   standalone: true,
-  imports: [],
+  imports: [HeaderComponent],
   templateUrl: './product-detail.component.html',
   styleUrl: './product-detail.component.css'
 })
-export class ProductDetailComponent implements OnInit {
+export class ProductDetailComponent implements OnInit, AfterViewInit, OnDestroy {
 
   constructor(private productService : ProductsListService, private service: ServiceService){}
+  ngOnDestroy(): void {
+    this.service.setBoolean(true)
+  }
+  ngAfterViewInit(): void {
+    
+  }
   id : string = "/"
   product : any
   category : string = ""

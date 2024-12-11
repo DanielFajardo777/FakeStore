@@ -1,10 +1,23 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, Input, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
 import { ProductsListService } from './products-list.service';
 import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { ServiceService } from '../service/service.service';
 import { Router } from '@angular/router';
 
+
+interface Product {
+  id: string;
+  title: string;
+  price: number;
+  description: string;
+  category: string;
+  image: string;
+  rating: {
+      rate: number;
+      count: number;
+  };
+}
 @Component({
   selector: 'app-products-list',
   standalone: true,
@@ -13,6 +26,7 @@ import { Router } from '@angular/router';
   styleUrl: './products-list.component.css'
 })
 export class ProductsListComponent implements OnInit {
+  showComponentProductList = true;
   categories : string [] = [
     "All",
     "electronics",
@@ -63,5 +77,18 @@ export class ProductsListComponent implements OnInit {
   click(productId : any){
     this.router.navigate(["/Detail"])
     this.service.setId(productId)
+    this.service.setBoolean(false)
+  }
+  filterId(productsList : any [], id:string){
+    for (let index = 0; index < productsList.length; index++) {
+      if (productsList[index].id == id) {
+        return productsList[index]
+      }
+    }
+  }
+  btnClick(event:Event, id : string){
+    // this.router.navigate(["/cart"])
+    event.stopPropagation();
+    this.service.addItemCart(this.filterId(this.productsList,id))
   }
 }

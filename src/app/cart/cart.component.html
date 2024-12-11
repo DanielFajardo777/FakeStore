@@ -1,0 +1,36 @@
+<div class="container">
+  <div class="row">
+    <div class="col-md-8 col-sm-12">
+      <h2>shopping cart </h2>
+      <table class="table table-responsive">
+        <thead>
+          <tr>
+            <th class="product-name">Product</th>
+            <th>Price</th>
+            <th></th>
+          </tr>
+        </thead>
+        @for (cartProduct of cartProducts; track $index) {
+          <tbody>
+          <tr>
+            <td class="product-name">{{cartProducts[$index].title}}</td>
+            <td>{{cartProducts[$index].price}}</td>
+            <td>
+              <button (click)="deleteClick(cartProducts[$index].id)" class="btn btn-danger">Delete</button>
+            </td>
+          </tr>
+        </tbody>
+        }
+        
+      </table>
+    </div>
+    <div class="col-md-4 col-sm-12">
+      <h3>Resumen de la Compra</h3>
+      <p>Subtotal: $<span id="subtotal">{{subtotal}}</span></p>
+      <p>IVA (19%): $<span id="iva">{{iva}}</span></p>
+      <p>Total: $<span id="total">{{total}}</span></p>
+      <button (click)="addProducts()" class="btn btn-primary btn-block mb-3">add more products</button>
+      <button class="btn btn-primary btn-block">Realizar Compra</button>
+    </div>
+  </div>
+</div>

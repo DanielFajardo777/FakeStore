@@ -16,7 +16,7 @@
         <div class="d-flex mt-3 flex-column align-items-center">
           <h5 class="text-center card-title">{{product.title}}</h5>
           <p class="card-text fw-bold">${{products[$index].price}}</p>
-          <button type="button" class="mb-3 btn btn-primary">Add to cart</button>
+          <button (click)="btnClick($event, product.id)" type="button" class="mb-3 btn btn-primary">Add to cart</button>
         </div>
       </div>
     }
