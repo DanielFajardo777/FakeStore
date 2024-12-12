@@ -15,7 +15,6 @@ import { Router } from '@angular/router';
 export class HeaderComponent implements OnInit{
   showProcuctListComponent = true
   products : any [] = []
-  
 
   constructor(private router :Router, private service: ServiceService){}
   ngOnInit(): void {
@@ -28,6 +27,9 @@ export class HeaderComponent implements OnInit{
   }
   cartClick(){
     this.router.navigate(["/cart"])
+  }
+  clickUser(){
+    this.router.navigate(["/user"])
   }
 
     change(event: Event){
